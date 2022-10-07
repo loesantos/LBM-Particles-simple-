@@ -138,19 +138,23 @@ int main ()
 
     rec_geometria ( ini_meio, st_nome, nx, ny, nz );
     
-    //============ Criação/inicialização das partículas ==========================================//
+    //============ Número, densidade e diâmetro das partículas ==========================================//
 
-    int num_part = 1000; 		// Número de partículas
+    int num_part; 		// Número de partículas
     
-    double rho_part = 50000000;   	// Densidade da fluido. = 1.0 (dens. do fluido =  0.001 g/cm^3) 
+    double rho_part;   	// Densidade da fluido. = 1.0 (dens. do fluido =  0.001 g/cm^3) 
     
-    double diam_part = 0.002;  	// Diâmetro da partícula
+    double diam_part;  	// Diâmetro da partícula
+    
+    read_data_particles ( &num_part, &rho_part, &diam_part );
     
     double raio_part = 0.5 * diam_part;
     
     double area_part = 3.1416 * raio_part * raio_part;	// Área da seção    
 
     double mass_part = (4./3.) * 3.1415 * pow( raio_part, 3. ) * rho_part; // Massa da partícula
+    
+    //============ Aloca a memória/ inicializa (partículas) ======================================//
     
     double *x_part = new double[num_part];
     double *y_part = new double[num_part];

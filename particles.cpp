@@ -4,6 +4,9 @@
 //
 //================================================================================================//
 
+//	Lê os dados das partículas (número, densidade e diâmetro)
+
+void read_data_particles ( int*, double*, double* );
 
 //	Inicia as partículas (posição e velocidade)
 
@@ -45,6 +48,41 @@ void verif_stab ( int, int&, int*, double*, double*, double*, double*, double*, 
 
 
 
+//===================== Lê os dados das partículas ==============================================//
+
+void read_data_particles ( int* num_part, double* rho_part, double* diam_part )
+{
+	char nome_in[] = "data_particles.txt";
+
+    ifstream f_in( nome_in );
+    
+    char st_num_part[25];
+    
+    f_in >> st_num_part;
+
+    f_in >> *num_part;
+
+    cout << "\nNúmero de partículas: " << *num_part << endl;
+    
+    char st_rho_part[25];
+    
+    f_in >> st_rho_part;
+
+    f_in >> *rho_part;
+
+    cout << "\nDensidade das partículas: " << *rho_part << endl;
+
+	char st_diam_part[25];
+    
+    f_in >> st_diam_part;
+
+    f_in >> *diam_part;
+
+    cout << "\nDiâmetro das partículas: " << *diam_part << endl;
+
+	f_in.close();
+
+}
 
 //===================== Inicia as partículas (posição e velocidade) ==============================//
 
